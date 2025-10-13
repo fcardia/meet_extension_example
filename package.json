@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@googleworkspace/meet-addons": "^1.2.0"
+  }
+}
