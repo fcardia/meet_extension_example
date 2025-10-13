@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { meet } from '@googleworkspace/meet-addons/meet.addons';
+import { meet } from '../node_modules/googleworkspace/meet-addons/meet.addons';
 
 const CLOUD_PROJECT_NUMBER = '418566026845';
 const MAIN_STAGE_URL = 'https://fcardia.github.io/meet_extension_example/src/MainStage.html';
