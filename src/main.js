@@ -14,7 +14,7 @@
 
 import { meet } from '@googleworkspace/meet-addons/meet.addons';
 
-const CLOUD_PROJECT_NUMBER = '989911054302';
+const CLOUD_PROJECT_NUMBER = '418566026845';
 const MAIN_STAGE_URL =
   'https://googleworkspace.github.io/meet/hello-world/MainStage.html';
 
