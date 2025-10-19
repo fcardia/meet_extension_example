@@ -44,11 +44,33 @@
 //   await session.createMainStageClient();
 // }
 
+// const CLOUD_PROJECT_NUMBER = '418566026845';
+// const MAIN_STAGE_URL = 'https://fcardia.github.io/meet_extension_example/src/MainStage.html';
+
+// async function setUpAddon() {
+//   // ✅ Usa l’oggetto globale fornito dalla libreria gstatic
+//   const session = await google.workspace.meet.addon.createAddonSession({
+//     cloudProjectNumber: CLOUD_PROJECT_NUMBER,
+//   });
+
+//   const sidePanelClient = await session.createSidePanelClient();
+
+//   document
+//     .getElementById('start-activity')
+//     .addEventListener('click', async () => {
+//       await sidePanelClient.startActivity({ mainStageUrl: MAIN_STAGE_URL });
+//     });
+// }
+
+// setUpAddon();
+
+// ✅ NIENTE import, Meet carica già la libreria da www.gstatic.com
+
 const CLOUD_PROJECT_NUMBER = '418566026845';
 const MAIN_STAGE_URL = 'https://fcardia.github.io/meet_extension_example/src/MainStage.html';
 
 async function setUpAddon() {
-  // ✅ Usa l’oggetto globale fornito dalla libreria gstatic
+  // L’oggetto globale è "google.workspace.meet.addon"
   const session = await google.workspace.meet.addon.createAddonSession({
     cloudProjectNumber: CLOUD_PROJECT_NUMBER,
   });
@@ -62,4 +84,5 @@ async function setUpAddon() {
     });
 }
 
+// Avvia la configurazione al caricamento
 setUpAddon();
