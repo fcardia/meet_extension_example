@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "@googleworkspace/meet-addons": "^1.2.0"
+    "@googleworkspace/meet-addons": "^1.2.0",
+    "firebase": "^12.4.0"
   },
   "devDependencies": {
     "webpack-cli": "^6.0.1"
