@@ -15,7 +15,7 @@
 import { meet } from '@googleworkspace/meet-addons/meet.addons';
 
 const CLOUD_PROJECT_NUMBER = '418566026845';
-const MAIN_STAGE_URL = "https://fcardia.github.io/meet_extension_example/MainStage.html";
+const MAIN_STAGE_URL = "https://fcardia.github.io/meet_extension_example/dist/MainStage.html";
 
 /**
  * Prepares the Add-on Side Panel Client, and adds an event to launch the
