@@ -19,7 +19,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     library: 'helloWorld',
-    path: path.resolve(__dirname, '../dist/hello-world'),
+    // path: path.resolve(__dirname, '../dist/hello-world'),
   },
   mode: "production"
 };
