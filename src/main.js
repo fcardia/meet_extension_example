@@ -12,10 +12,10 @@
 // // See the License for the specific language governing permissions and
 // // limitations under the License.
 
-import { meet } from 'googleworkspace/meet-addons/meet.addons';
+import { meet } from '@googleworkspace/meet-addons/meet.addons';
 
 const CLOUD_PROJECT_NUMBER = '418566026845';
-const MAIN_STAGE_URL = "https://fcardia.github.io/meet_extension_example/src/MainStage.html";
+const MAIN_STAGE_URL = "https://fcardia.github.io/meet_extension_example/MainStage.html";
 
 /**
  * Prepares the Add-on Side Panel Client, and adds an event to launch the
