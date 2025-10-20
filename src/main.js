@@ -22,6 +22,7 @@ const MAIN_STAGE_URL = "https://fcardia.github.io/meet_extension_example/dist/Ma
  * activity in the main stage when the main button is clicked.
  */
 export async function setUpAddon() {
+  console.log("Add-on set up!")
   const session = await meet.addon.createAddonSession({
     cloudProjectNumber: CLOUD_PROJECT_NUMBER,
   });
