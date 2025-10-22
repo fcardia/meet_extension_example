@@ -11,7 +11,7 @@
     <button id="start-activity">Launch Activity in Main Stage.</button>
 
     <input id="name" type="text" placeholder="Inserisci il tuo nome" />
-    <button id="send-request">Invia al server</button>
+    <button id="send-request" onclick="helloworld.sendRequest()">Invia al server</button>
     <pre id="output"></pre>
 
     <script>
@@ -21,7 +21,7 @@
         // The function (`setUpAddon`) is defined in main.js.
         // helloWorld.setUpAddon();
         helloworld.setUpAddon();
-        helloworld.sendRequest();
+        // helloworld.sendRequest();
       };
     </script>
   </body>
