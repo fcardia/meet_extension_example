@@ -19,6 +19,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     library: 'helloworld',
+    libraryTarget: "window",
     path: path.resolve(__dirname, './dist'),
   },
   mode: "production"
