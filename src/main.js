@@ -46,7 +46,7 @@ export async function initializeMainStage() {
 }
 
 export async function sendRequest() {
-  const btn = document.getElementById("send");
+  const btn = document.getElementById("send-request");
   const output = document.getElementById("output");
 
   btn.onclick = async () => {
