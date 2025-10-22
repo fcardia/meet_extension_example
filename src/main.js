@@ -45,7 +45,7 @@ export async function initializeMainStage() {
   await session.createMainStageClient();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+export async function sendRequest() {
   const btn = document.getElementById("send");
   const output = document.getElementById("output");
 
@@ -65,4 +65,4 @@ document.addEventListener("DOMContentLoaded", () => {
       output.textContent = "❌ Errore: " + err.message;
     }
   };
-});
+};

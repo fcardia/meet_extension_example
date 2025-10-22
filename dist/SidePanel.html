@@ -10,6 +10,9 @@
     <div>This is the Add-on Side Panel. Only you can see this.</div>
     <button id="start-activity">Launch Activity in Main Stage.</button>
 
+    <input id="name" type="text" placeholder="Inserisci il tuo nome" />
+    <button id="send-request">Invia al server</button>
+
     <script>
       // helloworld.setUpAddon();
       document.body.onload = () => {
@@ -17,6 +20,7 @@
         // The function (`setUpAddon`) is defined in main.js.
         // helloWorld.setUpAddon();
         helloworld.setUpAddon();
+        helloworld.sendRequest();
       };
     </script>
   </body>
