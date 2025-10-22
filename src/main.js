@@ -44,3 +44,25 @@ export async function initializeMainStage() {
   });
   await session.createMainStageClient();
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("send");
+  const output = document.getElementById("output");
+
+  btn.onclick = async () => {
+    const name = document.getElementById("name").value || "Sconosciuto";
+
+    try {
+      const response = await fetch("http://127.0.0.1:5000/api/test", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name }),
+      });
+
+      const data = await response.json();
+      output.textContent = JSON.stringify(data, null, 2);
+    } catch (err) {
+      output.textContent = "❌ Errore: " + err.message;
+    }
+  };
+});
