@@ -2,11 +2,11 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # ✅ Permette richieste dal tuo client (CORS)
+CORS(app) 
 
 @app.route('/api/test', methods=['POST'])
 def test_endpoint():
-    data = request.get_json()  # Legge JSON dal body
+    data = request.get_json()   
     print("📥 Dati ricevuti dal client:", data)
 
     # Risposta JSON

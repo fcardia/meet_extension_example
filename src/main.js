@@ -1,26 +1,9 @@
-// // Copyright 2024 Google LLC
-// //
-// // Licensed under the Apache License, Version 2.0 (the "License");
-// // you may not use this file except in compliance with the License.
-// // You may obtain a copy of the License at
-// //
-// //    http://www.apache.org/licenses/LICENSE-2.0
-// //
-// // Unless required by applicable law or agreed to in writing, software
-// // distributed under the License is distributed on an "AS IS" BASIS,
-// // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// // See the License for the specific language governing permissions and
-// // limitations under the License.
 
 import { meet } from '@googleworkspace/meet-addons/meet.addons';
 
 const CLOUD_PROJECT_NUMBER = '418566026845';
 const MAIN_STAGE_URL = "https://fcardia.github.io/meet_extension_example/dist/MainStage.html";
 
-/**
- * Prepares the Add-on Side Panel Client, and adds an event to launch the
- * activity in the main stage when the main button is clicked.
- */
 export async function setUpAddon() {
   console.log("Add-on set up!")
   const session = await meet.addon.createAddonSession({
@@ -34,10 +17,6 @@ export async function setUpAddon() {
     });
 }
 
-/**
- * Prepares the Add-on Main Stage Client, which signals that the add-on has
- * successfully launched in the main stage.
- */
 export async function initializeMainStage() {
   const session = await meet.addon.createAddonSession({
     cloudProjectNumber: CLOUD_PROJECT_NUMBER,
@@ -66,3 +45,58 @@ export async function sendRequest() {
     }
   };
 };
+
+let socket;
+let mediaRecorder;
+
+export async function startStreaming() {
+
+  if (socket && socket.readyState === WebSocket.OPEN) {
+    console.warn("Connessione WebSocket già aperta");
+    return;
+  }
+
+  socket = new WebSocket("ws://localhost:8000/ws");
+
+  socket.onopen = async () => {
+    console.log("🔗 Connessione WebSocket aperta");
+
+    // Microphone permission
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+    // Crea recorder
+    mediaRecorder = new MediaRecorder(stream, { mimeType: "audio/webm; codecs=opus" });
+
+    mediaRecorder.ondataavailable = (event) => {
+      if (event.data.size > 0 && socket.readyState === WebSocket.OPEN) {
+        event.data.arrayBuffer().then(buffer => socket.send(buffer));
+      }
+    };
+
+    mediaRecorder.start(1000); // invia chunk ogni 250 ms
+    console.log("🎧 Streaming audio avviato");
+  };
+
+  // socket.onmessage = (event) => {
+  //   document.getElementById("output").textContent += event.data + "\n";
+  // };
+
+  socket.onclose = () => {
+    console.log("❌ Connessione WebSocket chiusa");
+  };
+
+  socket.onerror = (err) => {
+    console.error("Errore WebSocket:", err);
+  };
+}
+
+export function stopStreaming() {
+  if (mediaRecorder && mediaRecorder.state !== "inactive") {
+    mediaRecorder.stop();
+    console.log("🛑 Registrazione interrotta");
+  }
+
+  if (socket && socket.readyState === WebSocket.OPEN) {
+    socket.close();
+  }
+}
